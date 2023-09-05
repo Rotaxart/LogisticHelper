@@ -16,7 +16,7 @@ const drawerWidth = 180;
 
 export const SideBar = () => {
   return (
-    <Box sx={{ position: "fixed" }}>
+    <Box sx={{ display: { sm: "block", xs: "none" } }}>
       {/* <CssBaseline /> */}
       {/* <AppBar */}
       {/*   position="fixed" */}

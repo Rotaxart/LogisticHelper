@@ -1,5 +1,5 @@
 "use client";
-import { Box, Divider, TextField, Typography } from "@mui/material";
+import { Box, Divider, Grid, TextField, Typography } from "@mui/material";
 import { FC, useEffect, useState } from "react";
 
 interface AwaitCalcProps {
@@ -14,7 +14,7 @@ export const AwaitCalculator: FC<AwaitCalcProps> = ({ cnyRate }) => {
 
   return (
     <>
-      <Box sx={{ display: "flex", w: "100%" }}>
+      <Grid container spacing={2}>
         <Box sx={{ p: 2, display: "flex", flexDirection: "column" }}>
           <TextField
             id="outlined-basic"
@@ -52,20 +52,23 @@ export const AwaitCalculator: FC<AwaitCalcProps> = ({ cnyRate }) => {
           />
         </Box>
         <Box sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-          <Typography sx={{ mb: 4 }}>
+          <Typography sx={{ m: 1, mb: 4 }}>
             {" "}
-            {`(${days} * ${price} * ${volume}) / (${cny} * 0.95) = ${(days * (price * volume)) / (cny * 0.95)
-              }
+            {`(${days} * ${price} * ${volume}) / (${cny} * 0.95) = ${
+              (days * (price * volume)) / (cny * 0.95)
+            }
             `}
           </Typography>
-          <Typography>{`CNY/RUB: ${cny}`}</Typography>
-          <Typography>{`CNY per day: ${(price * volume) / (cny * 0.95)
-            }`}</Typography>
+          <Typography sx={{ m: 1 }}>{`CNY/RUB: ${cny}`}</Typography>
+          <Typography sx={{ m: 1 }}>{`CNY per day: ${
+            (price * volume) / (cny * 0.95)
+          }`}</Typography>
           <Divider />
-          <Typography sx={{ mt: 1 }} variant="h5">{`Total: ${(days * (price * volume)) / (cny * 0.95)
-            } CNY`}</Typography>
+          <Typography sx={{ mt: 1, m: 1 }} variant="h5">{`Total: ${
+            (days * (price * volume)) / (cny * 0.95)
+          } CNY`}</Typography>
         </Box>
-      </Box>
+      </Grid>
     </>
   );
 };

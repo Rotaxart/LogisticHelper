@@ -2,6 +2,7 @@ import { SideBar } from "@/components/sidebar/SideBar";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Box } from "@mui/material";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,9 +18,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={inter.className} style={{ display: "flex" }}>
         <SideBar />
-        <div style={{ marginLeft: 180 }}>{children}</div>
+        <Box component="div" sx={{}}>
+          {children}
+        </Box>
       </body>
     </html>
   );
