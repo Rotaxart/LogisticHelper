@@ -1,12 +1,14 @@
 import { AwaitCalculator } from "@/components/awaitCalculator/AwaitCalculator";
 import { Box, Divider, Typography } from "@mui/material";
-import axios from "axios";
 import { FC } from "react";
 
 const getRates = async () => {
   try {
-    const { data } = await axios.get("https://www.cbr-xml-daily.ru/latest.js");
-    return data;
+    const res = await fetch("https://www.cbr-xml-daily.ru/latest.js", {
+      next: { revalidate: 60 * 60 },
+    });
+
+    return await res.json();
   } catch (error) {
     console.error(error);
   }
@@ -14,6 +16,7 @@ const getRates = async () => {
 
 const AwaitCalc: FC = async () => {
   const rates = await getRates();
+  console.log(rates);
   const cnyRate = 1 / rates.rates.CNY;
   return (
     <Box>
@@ -21,7 +24,7 @@ const AwaitCalc: FC = async () => {
         Calculator
       </Typography>
       <Divider />
-      <AwaitCalculator cnyRate={cnyRate} />
+      <AwaitCalculator cnyRate={Number(cnyRate.toFixed(4))} />
     </Box>
   );
 };
