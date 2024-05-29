@@ -54,21 +54,21 @@ export const AwaitCalculator: FC<AwaitCalcProps> = ({ cnyRate }) => {
         <Box sx={{ p: 2, display: "flex", flexDirection: "column" }}>
           <Typography sx={{ m: 1, mb: 4 }}>
             {" "}
-            {`(${days} * ${price} * ${volume}) / (${cny} * 0.95) = ${(
+            {`(${days} * ${price} * ${volume}) / (${cny} * 0.98) = ${(
               (days * (price * volume)) /
-              (cny * 0.95)
+              (cny * 0.98)
             ).toFixed(4)}
             `}
           </Typography>
           <Typography sx={{ m: 1 }}>{`CNY/RUB: ${cny}`}</Typography>
           <Typography sx={{ m: 1 }}>{`CNY per day: ${(
             (price * volume) /
-            (cny * 0.95)
+            (cny * 0.98)
           ).toFixed(4)}`}</Typography>
           <Divider />
           <Typography sx={{ mt: 1, m: 1 }} variant="h5">{`Total: ${(
             (days * (price * volume)) /
-            (cny * 0.95)
+            (cny * 0.98)
           ).toFixed(4)} CNY`}</Typography>
         </Box>
       </Grid>
